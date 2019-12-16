@@ -68,6 +68,7 @@ class CourseArticlesEditedFragment : Fragment(), ArticlesEditedView {
             View.VISIBLE
         } else {
             View.GONE
+
         }
     }
 

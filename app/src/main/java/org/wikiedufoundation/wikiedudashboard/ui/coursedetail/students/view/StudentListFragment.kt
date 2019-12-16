@@ -73,7 +73,6 @@ class StudentListFragment : Fragment(), StudentListView {
             textViewNoStudents?.visibility = View.VISIBLE
         }
     }
-
     /**
      * Use [openStudentProfile] to send [username] to [ProfileActivity]
      *

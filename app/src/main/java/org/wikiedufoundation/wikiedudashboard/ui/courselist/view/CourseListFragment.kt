@@ -85,10 +85,12 @@ class CourseListFragment : Fragment(), CourseListView {
     }
 
     override fun showProgressBar(show: Boolean) {
-        progressBar?.visibility = if (show) {
-            View.VISIBLE
-        } else {
-            View.GONE
+        if (isAdded) {
+            progressBar?.visibility = if (show) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
         }
     }
 

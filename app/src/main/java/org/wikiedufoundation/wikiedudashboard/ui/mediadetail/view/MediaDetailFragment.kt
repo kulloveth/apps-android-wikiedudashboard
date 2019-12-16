@@ -266,6 +266,7 @@ class MediaDetailFragment : Fragment(), Toolbar.OnMenuItemClickListener, MediaDe
         } else {
             recyclerFileUsesList?.visibility = View.GONE
             textViewNoUses?.visibility = View.VISIBLE
+
         }
     }
 

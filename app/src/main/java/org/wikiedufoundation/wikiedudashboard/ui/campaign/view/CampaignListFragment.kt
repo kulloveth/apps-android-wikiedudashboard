@@ -77,6 +77,7 @@ class CampaignListFragment : Fragment(), CampaignListContract.View {
     }
 
     override fun setData(data: ExploreCampaignsResponse) {
+
         Timber.d(data.toString())
         if (data.campaigns.isNotEmpty()) {
             campaignList = data.campaigns
@@ -87,14 +88,17 @@ class CampaignListFragment : Fragment(), CampaignListContract.View {
         } else {
             recyclerCampaignList?.visibility = View.GONE
             textViewNoCampaigns?.visibility = View.VISIBLE
+
         }
     }
 
     override fun showProgressBar(show: Boolean) {
-        progressBar?.visibility = if (show) {
-            View.VISIBLE
-        } else {
-            View.GONE
+        if (isAdded) {
+            progressBar?.visibility = if (show) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
         }
     }
 

@@ -60,6 +60,7 @@ class RecentActivityFragment : Fragment(), RecentActivityContract.View {
         } else {
             recyclerEditedArticlesList?.visibility = View.GONE
             textViewNoActivity?.visibility = View.VISIBLE
+
         }
     }
 
@@ -68,6 +69,7 @@ class RecentActivityFragment : Fragment(), RecentActivityContract.View {
             View.VISIBLE
         } else {
             View.GONE
+
         }
     }
 

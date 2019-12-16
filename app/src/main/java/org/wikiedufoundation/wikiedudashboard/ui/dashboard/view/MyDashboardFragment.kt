@@ -81,6 +81,7 @@ class MyDashboardFragment : Fragment(), MyDashboardContract.View {
     }
 
     override fun setData(data: MyDashboardResponse) {
+
         sharedPrefs.userName = data.user.userName
         Timber.d(data.toString())
 
@@ -93,15 +94,17 @@ class MyDashboardFragment : Fragment(), MyDashboardContract.View {
         } else {
             recyclerCourseList?.visibility = View.GONE
             textViewNoCourses?.visibility = View.VISIBLE
+
         }
     }
 
     override fun showProgressBar(show: Boolean) {
-        progressBar?.visibility = if (show) {
-            View.VISIBLE
-        } else {
-            View.GONE
-        }
+            progressBar?.visibility = if (show) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
+
     }
 
     override fun showMessage(message: String) {
