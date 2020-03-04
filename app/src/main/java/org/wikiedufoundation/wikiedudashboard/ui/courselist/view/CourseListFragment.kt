@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.fragment_explore_course_list.*
 import kotlinx.android.synthetic.main.fragment_explore_course_list.progressBar
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import org.wikiedufoundation.wikiedudashboard.R
 import org.wikiedufoundation.wikiedudashboard.data.preferences.SharedPrefs
 import org.wikiedufoundation.wikiedudashboard.ui.adapters.CourseListRecyclerAdapter
@@ -21,6 +22,8 @@ import org.wikiedufoundation.wikiedudashboard.ui.coursedetail.common.view.Course
 import org.wikiedufoundation.wikiedudashboard.ui.courselist.data.CourseListData
 import org.wikiedufoundation.wikiedudashboard.util.filterOrEmptyList
 import timber.log.Timber
+import java.util.Locale
+import kotlin.collections.ArrayList
 
 /**
  * A simple [Fragment] subclass.
@@ -30,9 +33,8 @@ import timber.log.Timber
  */
 class CourseListFragment : Fragment() {
 
-    private val courselistViewModel by viewModel<CourseListViewModel>()
     private val sharedPrefs: SharedPrefs by inject()
-
+    private val courselistViewModel by viewModel<CourseListViewModel> { parametersOf(sharedPrefs.cookies) }
     private var mParam1: String? = null
     private var mParam2: String? = null
     private var coursesList: List<CourseListData> = ArrayList()
@@ -58,9 +60,8 @@ class CourseListFragment : Fragment() {
         }
         initializeRecyclerView()
         setData()
-        showProgressBar()
-        showMessage()
-        sharedPrefs.cookies?.let { courselistViewModel.fetchCourseList(it) }
+        initializeProgressBar()
+        initializeMessage()
     }
 
     private fun initializeRecyclerView() {
@@ -71,10 +72,7 @@ class CourseListFragment : Fragment() {
         }
     }
 
-    /**
-     *   This sets the data to be displayed on the recyclerview based on available data
-     */
-    fun setData() {
+    private fun setData() {
         courselistViewModel.data.observe(this, Observer {
             Timber.d(it.toString())
             if (it.isNotEmpty()) {
@@ -88,19 +86,13 @@ class CourseListFragment : Fragment() {
         })
     }
 
-    /**
-     *   This shows the progressbar
-     */
-    fun showProgressBar() {
+    private fun initializeProgressBar() {
         courselistViewModel.progressbar.observe(this, androidx.lifecycle.Observer {
             progressBar.visibility = if (it) View.VISIBLE else View.GONE
         })
     }
 
-    /**
-     *   This shows the message
-     */
-    fun showMessage() {
+    private fun initializeMessage() {
         courselistViewModel.showMsg.observe(this, androidx.lifecycle.Observer {
             val message = it?.showMsg
             Toast.makeText(context, message, Toast.LENGTH_LONG).show()
@@ -117,9 +109,9 @@ class CourseListFragment : Fragment() {
     fun updateSearchQuery(query: String) {
         Timber.d(query)
 
-        val filterCourseQuery = coursesList.filterOrEmptyList {
-            it.title.toLowerCase()
-                    .contains(query.toLowerCase())
+        val filterCourseQuery = courselistViewModel.data.value.filterOrEmptyList {
+            it.title.toLowerCase(Locale.getDefault())
+                    .contains(query.toLowerCase(Locale.getDefault()))
         }
 
         courseListRecyclerAdapter.setData(filterCourseQuery)

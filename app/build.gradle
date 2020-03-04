@@ -72,6 +72,7 @@ dependencies {
     implementation Deps.annotationVersion
     implementation Deps.kotlinVersion
     implementation Deps.kotlinxCoroutineVersion
+    implementation Deps.retrofitVersion
 
     // Image Viewer library
     implementation Deps.photoViewVersion
@@ -112,7 +113,7 @@ dependencies {
     implementation Deps.koinViewModelVersion
 
     // Room Dependencies
-    api Deps.roomRuntime
+    implementation Deps.roomRuntime
     kapt Deps.roomCompiler
     implementation Deps.room
 
@@ -123,5 +124,4 @@ dependencies {
     implementation Deps.lifecycleLivedata
     implementation Deps.lifecycleRuntime
     implementation Deps.coroutineAdapter
-
 }
