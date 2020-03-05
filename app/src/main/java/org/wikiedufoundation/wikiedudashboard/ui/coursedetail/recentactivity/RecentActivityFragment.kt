@@ -16,6 +16,7 @@ import org.koin.core.parameter.parametersOf
 import org.wikiedufoundation.wikiedudashboard.R
 import org.wikiedufoundation.wikiedudashboard.ui.adapters.RecentActivityRecyclerAdapter
 import org.wikiedufoundation.wikiedudashboard.ui.coursedetail.recentactivity.viewmodel.RecentActivityViewModel
+import org.wikiedufoundation.wikiedudashboard.util.showSnackbar
 import org.wikiedufoundation.wikiedudashboard.util.showToast
 import timber.log.Timber
 
@@ -79,7 +80,7 @@ class RecentActivityFragment : Fragment() {
     private fun initialzeToaster() {
         recentActivityViewModel.showMsg.observe(this, androidx.lifecycle.Observer {
             val message = it.showMsg
-            context?.showToast(message)
+            view?.showSnackbar(message)
         })
     }
 }

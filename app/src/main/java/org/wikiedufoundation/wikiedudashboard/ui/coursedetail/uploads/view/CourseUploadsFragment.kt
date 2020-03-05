@@ -16,6 +16,7 @@ import org.wikiedufoundation.wikiedudashboard.ui.adapters.CourseUploadsRecyclerA
 import org.wikiedufoundation.wikiedudashboard.ui.coursedetail.uploads.data.CourseUploadList
 import org.wikiedufoundation.wikiedudashboard.ui.coursedetail.uploads.viewmodel.CourseUploadsViewModel
 import org.wikiedufoundation.wikiedudashboard.ui.mediadetail.MediaDetailsActivity
+import org.wikiedufoundation.wikiedudashboard.util.showSnackbar
 import org.wikiedufoundation.wikiedudashboard.util.showToast
 import timber.log.Timber
 
@@ -88,7 +89,7 @@ class CourseUploadsFragment : Fragment() {
     private fun initializeToaster() {
         courseUploadsViewModel.showMsg.observe(this, androidx.lifecycle.Observer {
             val message = it.showMsg
-            context?.showToast(message)
+            view?.showSnackbar(message)
         })
     }
     /**

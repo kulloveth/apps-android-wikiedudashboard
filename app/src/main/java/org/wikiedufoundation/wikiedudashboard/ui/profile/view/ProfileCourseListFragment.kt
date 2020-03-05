@@ -16,6 +16,7 @@ import org.wikiedufoundation.wikiedudashboard.ui.coursedetail.common.view.Course
 import org.wikiedufoundation.wikiedudashboard.ui.profile.data.CourseData
 import org.wikiedufoundation.wikiedudashboard.ui.profile.data.ProfileResponse
 import org.wikiedufoundation.wikiedudashboard.ui.profile.viewmodel.ProfileViewModel
+import org.wikiedufoundation.wikiedudashboard.util.showSnackbar
 import org.wikiedufoundation.wikiedudashboard.util.showToast
 import timber.log.Timber
 
@@ -89,7 +90,7 @@ class ProfileCourseListFragment : Fragment() {
     private fun initializeToaster() {
         profileViewModel.showMsg.observe(this, androidx.lifecycle.Observer {
             val message = it.showMsg
-            context?.showToast(message)
+            view?.showSnackbar(message)
         })
     }
 

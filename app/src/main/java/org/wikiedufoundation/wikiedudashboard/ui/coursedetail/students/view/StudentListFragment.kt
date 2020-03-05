@@ -18,6 +18,7 @@ import org.wikiedufoundation.wikiedudashboard.R
 import org.wikiedufoundation.wikiedudashboard.ui.adapters.StudentListRecyclerAdapter
 import org.wikiedufoundation.wikiedudashboard.ui.coursedetail.students.viewmodel.StudentsViewModel
 import org.wikiedufoundation.wikiedudashboard.ui.profile.ProfileActivity
+import org.wikiedufoundation.wikiedudashboard.util.showSnackbar
 import org.wikiedufoundation.wikiedudashboard.util.showToast
 import timber.log.Timber
 
@@ -62,7 +63,7 @@ class StudentListFragment : Fragment() {
     private fun initializeToaster() {
         studentsViewModel.showMsg.observe(this, androidx.lifecycle.Observer {
             val message = it.showMsg
-            context?.showToast(message)
+            view?.showSnackbar(message)
         })
     }
 

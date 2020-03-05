@@ -1,5 +1,6 @@
 package org.wikiedufoundation.wikiedudashboard.ui.coursedetail.common.view
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -15,6 +16,7 @@ import org.wikiedufoundation.wikiedudashboard.ui.coursedetail.recentactivity.Rec
 import org.wikiedufoundation.wikiedudashboard.ui.coursedetail.students.view.StudentListFragment
 import org.wikiedufoundation.wikiedudashboard.ui.coursedetail.uploads.view.CourseUploadsFragment
 import org.wikiedufoundation.wikiedudashboard.util.ViewPagerAdapter
+import org.wikiedufoundation.wikiedudashboard.util.showSnackbar
 import org.wikiedufoundation.wikiedudashboard.util.showToast
 
 /**
@@ -100,7 +102,7 @@ class CourseDetailActivity : AppCompatActivity() {
     private fun initializeToaster() {
         courseDetailViewModel.showMsg.observe(this, androidx.lifecycle.Observer {
             val message = it.showMsg
-            showToast(message)
+           window.decorView.showSnackbar(message)
         })
     }
 }
