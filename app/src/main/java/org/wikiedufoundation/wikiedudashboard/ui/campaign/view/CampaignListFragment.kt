@@ -16,6 +16,7 @@ import org.wikiedufoundation.wikiedudashboard.data.preferences.SharedPrefs
 import org.wikiedufoundation.wikiedudashboard.ui.adapters.CampaignListRecyclerAdapter
 import org.wikiedufoundation.wikiedudashboard.ui.campaign.viewmodel.ActiveCampaignViewModel
 import org.wikiedufoundation.wikiedudashboard.util.filterOrEmptyList
+import org.wikiedufoundation.wikiedudashboard.util.showSnackbar
 import timber.log.Timber
 import java.util.Locale
 
@@ -89,7 +90,7 @@ class CampaignListFragment : Fragment() {
     private fun initializeToaster() {
         activeCampaignViewModel.showMsg.observe(this, androidx.lifecycle.Observer {
             val message = it?.showMsg
-            Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+            message?.let { mesage -> view?.showSnackbar(mesage) }
         })
     }
 
