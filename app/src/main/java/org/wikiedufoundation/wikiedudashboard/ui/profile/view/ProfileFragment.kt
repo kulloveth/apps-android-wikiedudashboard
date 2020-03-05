@@ -23,7 +23,6 @@ import org.wikiedufoundation.wikiedudashboard.ui.settings.SettingsActivity
 import org.wikiedufoundation.wikiedudashboard.util.Urls
 import org.wikiedufoundation.wikiedudashboard.util.ViewPagerAdapter
 import org.wikiedufoundation.wikiedudashboard.util.showSnackbar
-import org.wikiedufoundation.wikiedudashboard.util.showToast
 import timber.log.Timber
 
 /**

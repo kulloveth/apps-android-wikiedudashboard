@@ -17,7 +17,6 @@ import org.wikiedufoundation.wikiedudashboard.ui.coursedetail.uploads.data.Cours
 import org.wikiedufoundation.wikiedudashboard.ui.coursedetail.uploads.viewmodel.CourseUploadsViewModel
 import org.wikiedufoundation.wikiedudashboard.ui.mediadetail.MediaDetailsActivity
 import org.wikiedufoundation.wikiedudashboard.util.showSnackbar
-import org.wikiedufoundation.wikiedudashboard.util.showToast
 import timber.log.Timber
 
 /**
@@ -43,9 +42,9 @@ class CourseUploadsFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_upload_list, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -66,6 +65,7 @@ class CourseUploadsFragment : Fragment() {
             adapter = courseUploadsRecyclerAdapter
         }
     }
+
     private fun setData() {
         courseUploadsViewModel.uploadList.observe(this, Observer {
             Timber.d(it.toString())
@@ -92,6 +92,7 @@ class CourseUploadsFragment : Fragment() {
             view?.showSnackbar(message)
         })
     }
+
     /**
      * Use [openCourseDetail] to send course uploads data and each uploads' position
      * and then start MediaDetailsActivity
@@ -121,11 +122,11 @@ class CourseUploadsFragment : Fragment() {
          * ***/
         fun newInstance(type: Int, courseDetail: String, courseUploads: CourseUploadList?) =
                 CourseUploadsFragment().apply {
-            val args = Bundle()
-            args.putInt(ARG_PARAM1, type)
-            args.putString(ARG_PARAM2, courseDetail)
-            args.putSerializable(ARG_PARAM3, courseUploads)
-            this.arguments = args
-        }
+                    val args = Bundle()
+                    args.putInt(ARG_PARAM1, type)
+                    args.putString(ARG_PARAM2, courseDetail)
+                    args.putSerializable(ARG_PARAM3, courseUploads)
+                    this.arguments = args
+                }
     }
 }

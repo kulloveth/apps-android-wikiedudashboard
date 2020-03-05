@@ -8,16 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_campaign_list.*
 import kotlinx.android.synthetic.main.fragment_recent_activity.*
-import kotlinx.android.synthetic.main.fragment_recent_activity.progressBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import org.wikiedufoundation.wikiedudashboard.R
 import org.wikiedufoundation.wikiedudashboard.ui.adapters.RecentActivityRecyclerAdapter
 import org.wikiedufoundation.wikiedudashboard.ui.coursedetail.recentactivity.viewmodel.RecentActivityViewModel
 import org.wikiedufoundation.wikiedudashboard.util.showSnackbar
-import org.wikiedufoundation.wikiedudashboard.util.showToast
 import timber.log.Timber
 
 /**
@@ -32,9 +29,9 @@ class RecentActivityFragment : Fragment() {
     private val recentActivityViewModel by viewModel<RecentActivityViewModel> { parametersOf(url) }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_recent_activity, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

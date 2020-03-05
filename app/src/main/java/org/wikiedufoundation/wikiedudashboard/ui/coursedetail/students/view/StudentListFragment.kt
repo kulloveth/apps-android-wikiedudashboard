@@ -5,13 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_explore_students.*
-import kotlinx.android.synthetic.main.fragment_explore_students.progressBar
-import kotlinx.android.synthetic.main.fragment_my_dashboard.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import org.wikiedufoundation.wikiedudashboard.R
@@ -19,7 +16,6 @@ import org.wikiedufoundation.wikiedudashboard.ui.adapters.StudentListRecyclerAda
 import org.wikiedufoundation.wikiedudashboard.ui.coursedetail.students.viewmodel.StudentsViewModel
 import org.wikiedufoundation.wikiedudashboard.ui.profile.ProfileActivity
 import org.wikiedufoundation.wikiedudashboard.util.showSnackbar
-import org.wikiedufoundation.wikiedudashboard.util.showToast
 import timber.log.Timber
 
 /**
@@ -31,9 +27,9 @@ class StudentListFragment : Fragment() {
     private val studentsViewModel by viewModel<StudentsViewModel> { parametersOf(url) }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_explore_students, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

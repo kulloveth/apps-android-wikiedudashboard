@@ -17,7 +17,6 @@ import org.wikiedufoundation.wikiedudashboard.ui.profile.data.CourseData
 import org.wikiedufoundation.wikiedudashboard.ui.profile.data.ProfileResponse
 import org.wikiedufoundation.wikiedudashboard.ui.profile.viewmodel.ProfileViewModel
 import org.wikiedufoundation.wikiedudashboard.util.showSnackbar
-import org.wikiedufoundation.wikiedudashboard.util.showToast
 import timber.log.Timber
 
 /**
@@ -34,14 +33,15 @@ class ProfileCourseListFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            coursesList = (it.getSerializable(ARG_PARAM1) as? ProfileResponse)?.courses ?: emptyList()
+            coursesList = (it.getSerializable(ARG_PARAM1) as? ProfileResponse)?.courses
+                    ?: emptyList()
         }
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_explore_course_list, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
